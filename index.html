@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random color changer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        button {
+            font-weight: bolder;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: antiquewhite;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+        }
+        h1 {
+            position: absolute;
+            top: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">Random Color Changer</h1>
+    <button>Change Color</button>
+</body>
+<script>
+    let button = document.querySelector("button");
+    let heading = document.querySelector("#heading");
+
+    button.addEventListener("click", function() {
+        let red = Math.ceil(Math.random() * 255);
+        let green = Math.ceil(Math.random() * 255);
+        let blue = Math.ceil(Math.random() * 255);
+        document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+    // 🎯 Calculate brightness
+    let brightness = (red * 299 + green * 587 + blue * 114) / 1000;
+
+    // 🎨 Adjust heading color
+    if (brightness > 128) {
+        heading.style.color = "black";   // light background
+    } else {
+        heading.style.color = "white";   // dark background
+    }
+    });
+    
+    
+</script>
+</html>
